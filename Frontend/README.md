@@ -1,12 +1,59 @@
-# React + Vite
+# DevStart - React + Vite + Tailwind CSS Boilerplate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal and modern boilerplate to kickstart your React project. Powered by [Vite](https://vitejs.dev/) and pre-configured with [Tailwind CSS](https://tailwindcss.com/).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ⚛️ **React 19** – Latest version
+- ⚡ **Vite** – Fast, instant HMR
+- 🎨 **Tailwind CSS** – Utility-first CSS
+- 🛠️ **ESLint** – Preconfigured for React
+- 🧹 Clean, minimal file structure
+- ✅ Ready for production build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📦 Installation
+
+```bash
+npm create devstart@latest
+❓ Enter a name for your project folder:
+cd my-app
+npm install
+```
+
+> ⚠️ Do not use `npm install create-devstart` directly unless you're developing the tool.
+>  
+> To scaffold a new project, use:
+
+```bash
+npx create-devstart my-app
+```
+
+
+> Replace `my-app` with your desired project name.
+
+This will:
+
+    Create a new folder my-app/
+
+    Copy the boilerplate files
+
+    Install all dependencies
+
+    Initialize a Git repository
+
+
+## 📚 Tech Stack
+
+    React 19
+    Vite
+    Tailwind CSS
+    ESLint
+
+
+## 🧑‍💻 Author
+
+Made with ❤️ by `Pardeep Shyoran`
