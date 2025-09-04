@@ -1,1 +1,33 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Bitcount+Single:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Onest:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--font-family);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    width: 100%;
+    height: 100%;
+}
+
+:root{
+    --primary-color: #1d1d1d;
+    --secondary-color: #2c2c2c;
+    --accent-color: #0095f6;
+    --accent-color2: #4dff00;
+    --text-color: #ffffff;
+    --text-color2: #444;
+    --text-color3: #666;
+    --border-color: #333333;
+    --font-family: 'Arial', sans-serif;
+    --font-family1: 'Antonio', sans-serif;
+    --font-family2: 'Bitcount Single', sans-serif;
+    --font-family3: 'Montserrat', sans-serif;
+    --font-family4: 'Onest', sans-serif;
+    --font-family5: 'Roboto', sans-serif;
+    --font-family6: 'Syne', sans-serif;
+}

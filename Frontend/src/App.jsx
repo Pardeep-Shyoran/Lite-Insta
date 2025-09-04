@@ -1,8 +1,11 @@
-const App = () => {
+import MainRoutes from "./routes/MainRoutes"
+
+function App() {
+
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <MainRoutes />
+    </>
   )
 }
 
