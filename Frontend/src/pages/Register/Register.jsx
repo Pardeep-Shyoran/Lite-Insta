@@ -1,8 +1,5 @@
 import { Helmet } from "react-helmet";
-<<<<<<< HEAD
-=======
 import { useForm } from "react-hook-form";
->>>>>>> affe6b7 (project added)
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -10,8 +7,6 @@ import { toast } from "react-toastify"
 import styles from "./Register.module.css";
 
 const Register = () => {
-<<<<<<< HEAD
-=======
 
   const navigate = useNavigate();
   // const dispatch = useDispatch();
@@ -25,8 +20,6 @@ const Register = () => {
     navigate("/login");
   }
 
-
->>>>>>> affe6b7 (project added)
   return (
     <>
       <Helmet>
@@ -35,9 +28,6 @@ const Register = () => {
       </Helmet>
       <div>
         <h1>Register Page</h1>
-<<<<<<< HEAD
-
-=======
         <form onSubmit={handleSubmit(RegisterHandler)} method="POST" encType="multipart/form-data">
           <div>
             <label>Choose Profile Pic: </label>
@@ -68,7 +58,6 @@ const Register = () => {
           <p>Already have an account? <Link to="/login">Login</Link></p>
 
         </form>
->>>>>>> affe6b7 (project added)
       </div>
     </>
   )
