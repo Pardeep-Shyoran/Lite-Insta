@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify"
 import styles from "./Register.module.css";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Register = () => {
 
@@ -12,8 +13,10 @@ const Register = () => {
   // const dispatch = useDispatch();
   const { register, reset, handleSubmit,} = useForm();
 
-  function RegisterHandler(data) {
-    console.log(data);
+  function RegisterHandler(user) {
+    user.id = nanoid();
+
+    console.log(user);
     // Implement registration logic here, e.g., send data to backend
     toast.success("Registered successfully!");
     reset();
