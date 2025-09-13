@@ -1,27 +1,43 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify"
 import styles from "./Register.module.css";
 import { nanoid } from "@reduxjs/toolkit";
+import { registerUser } from "../../features/Auth/authActions";
 
 const Register = () => {
 
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  const { register, reset, handleSubmit,} = useForm();
+  const dispatch = useDispatch();
+
+  const { loading, error, success } = useSelector(
+    (state) => state.authReducer
+  );
+
+  const { register, handleSubmit } = useForm();
 
   function RegisterHandler(user) {
+    if(user.password !== user.confirmPassword){
+      toast.warn("Please check your password and confirm password fields.");
+      return;
+    }
+    user.email = user.email.toLowerCase();
+
     user.id = nanoid();
 
-    console.log(user);
-    // Implement registration logic here, e.g., send data to backend
+    // console.log(user);
+    dispatch(registerUser(user));
     toast.success("Registered successfully!");
-    reset();
-    navigate("/login");
   }
+
+  useEffect(() => {
+    if (success) {
+      navigate("/");
+    }
+  }, [success, navigate]);
 
   return (
     <>
@@ -37,15 +53,15 @@ const Register = () => {
             <input type="file" {...register('profilePic')} />
           </div>
 
-          {/* <div>
+          <div>
             <label>Full Name: </label>
-            <input type="text" />
+            <input type="text" {...register('fullName')} />
           </div>
 
           <div>
             <label>Email: </label>
-            <input type="email" />
-          </div> */}
+            <input type="email" {...register('email')} />
+          </div>
 
           <div>
             <label>Username: </label>
@@ -55,6 +71,11 @@ const Register = () => {
           <div>
             <label>Password: </label>
             <input type="password" {...register('password')} />
+          </div>
+
+          <div>
+            <label>Confirm Password: </label>
+            <input type="password" {...register('confirmPassword')} />
           </div>
 
           <button type="submit">Register</button>
