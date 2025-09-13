@@ -1,37 +1,61 @@
-.navbar{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 25%;
-    padding: 0.4rem;
-    background-color: var(--text-color2);
-    border: 1px solid var(--text-color3);
-    border-radius: 32px;
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.4rem;
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25%;
+  padding: 0.4rem;
+  background-color: var(--navbar-bg);
+  border: 1px solid var(--navbar-border);
+  border-radius: 32px;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+}
 
-    .link{
-        color: var(--text-color);
-        text-decoration: none;
-        padding: 0.8rem 1.2rem;
-        border-radius: 28px;
-        transition: all 0.3s ease;
-        border: 1px solid transparent;
+.navbar .link {
+  color: var(--navbar-link);
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 28px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
 
-        &:hover{
-            background-color: var(--text-color3);
-        }
+.navbar .link:hover {
+  background-color: var(--navbar-link-hover);
+}
 
-        &.active{
-            background-color: var(--accent-color2);
-            color: var(--primary-color);
-            border: 1px solid var(--text-color3);
-        }
-        
-    }
+.navbar .link.active {
+  background-color: var(--navbar-link-active-bg);
+  color: var(--navbar-link-active-color);
+  border: 1px solid var(--navbar-border);
+}
 
+/* ===========================
+   Responsive Styles
+   =========================== */
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .navbar {
+    width: 50%;
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .navbar {
+    width: 70%;
+    bottom: 1rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    padding: 0.3rem;
+  }
+
+  .navbar .link {
+    padding: 0.6rem 0.8rem;
+  }
 }

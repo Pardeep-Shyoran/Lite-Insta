@@ -23,6 +23,26 @@ body{
     --text-color2: #444;
     --text-color3: #666;
     --border-color: #333333;
+
+  /* Colors */
+  --color-white: #1c1c28;
+
+  --color-bg-light: #121212;
+  --color-bg-accent: #1e1e2f;
+  --color-surface: #1c1c28;       /* cards, forms, inputs in dark mode */
+  --color-surface-alt: #2a2a3d;
+  --color-text-dark: #f9f9f9;
+  --color-text-mid: #e0e0e0;
+  --color-text-light: #aaa;
+  --color-primary: #7a74ff;
+  --color-primary-hover: #5b55d6;
+  --color-error: #ff6b6b;
+  --color-border: #333;
+  --color-border-strong: #444;
+
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.6);
+
+  /* Font */
     --font-family: 'Arial', sans-serif;
     --font-family1: 'Antonio', sans-serif;
     --font-family2: 'Bitcount Single', sans-serif;
@@ -30,4 +50,32 @@ body{
     --font-family4: 'Onest', sans-serif;
     --font-family5: 'Roboto', sans-serif;
     --font-family6: 'Syne', sans-serif;
+
+  /* Sizing */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+
+  /* Spacing */
+  --space-xs: 0.3rem;
+  --space-sm: 0.4rem;
+  --space-md: 0.8rem;
+  --space-lg: 1rem;
+  --space-xl: 2rem;
+
+  /* Font sizes */
+  --fs-sm: 0.8rem;
+  --fs-base: 0.95rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.8rem;
+  --fs-xl: 2rem;
+
+  --navbar-bg: #1e1e2f;
+  --navbar-border: #333;
+  --navbar-link: #e0e0e0;
+  --navbar-link-hover: #2a2a3d;
+  --navbar-link-active-bg: #2f2f48;
+  --navbar-link-active-color: #7a74ff;
 }

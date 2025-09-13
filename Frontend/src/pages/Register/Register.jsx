@@ -46,9 +46,9 @@ const Register = () => {
     }
     if (success) {
       toast.success(message || "Registration successful!");
+      reset();
       navigate("/");
     }
-    reset();
   }, [success, navigate, loading, message, error]);
 
   return (

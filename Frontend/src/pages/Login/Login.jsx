@@ -13,7 +13,13 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, reset } = useForm();
+  const { 
+    register, 
+    handleSubmit, 
+    reset,
+    formState: { errors, isSubmitting } 
+   } = 
+   useForm();
 
   function LoginHandler(user) {
     // console.log(user);
@@ -110,9 +116,9 @@ const Login = () => {
               <button
                 type="submit"
                 className={styles["login-button"]}
-                disabled={loading}
+                disabled={isSubmitting}
               >
-                {loading ? "Logging in..." : "Login"}
+                {isSubmitting ? "Logging in..." : "Login"}
               </button>
 
               <p className={styles["login-extraText"]}>

@@ -1,11 +1,9 @@
-/* Login.module.css */
-
 .login-container {
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color: #f9f9ff;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-light);
+  font-family: var(--font-family2);
 }
 
 .login-leftSection {
@@ -14,21 +12,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #f0edff;
-  padding: 2rem;
+  background: var(--color-bg-accent);
+  padding: var(--space-xl);
   text-align: center;
 }
 
 .login-leftSection h2 {
-  font-size: 2rem;
+  font-size: var(--fs-xl);
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: #333;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-mid);
 }
 
 .login-leftSection p {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--color-text-light);
 }
 
 .login-rightSection {
@@ -36,72 +34,80 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: var(--space-xl);
 }
 
 .login-formBox {
   width: 100%;
   max-width: 400px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
 }
 
 .login-formBox h1 {
-  font-size: 1.8rem;
+  font-size: var(--fs-lg);
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #222;
+  color: var(--color-text-dark);
 }
 
 .login-formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-lg);
 }
 
 .login-label {
   display: block;
   font-size: 0.9rem;
-  margin-bottom: 0.4rem;
-  color: #444;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-mid);
 }
 
 .login-input {
   width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  background-color: var(--color-surface);
+  color: var(--color-text-dark); 
+  font-family: var(--font-family2);
   outline: none;
   transition: 0.3s;
 }
 
 .login-input:focus {
-  border-color: #6c63ff;
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
 }
 
+.login-input::placeholder{
+    font-family: var(--font-family2);
+}
+
 .login-error {
-  color: #e63946;
-  font-size: 0.8rem;
-  margin-top: 0.3rem;
+  color: var(--color-error);
+  font-size: var(--fs-sm);
+  margin-top: var(--space-xs);
 }
 
 .login-button {
   width: 100%;
   padding: 0.9rem;
-  background-color: #6c63ff;
-  color: #fff;
-  font-size: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: var(--fs-md);
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family2);
   cursor: pointer;
   transition: 0.3s;
 }
 
 .login-button:hover {
-  background-color: #574fd1;
+  background-color: var(--color-primary-hover);
 }
 
 .login-button:disabled {
@@ -110,18 +116,73 @@
 }
 
 .login-extraText {
-  margin-top: 1rem;
+  margin-top: var(--space-lg);
   text-align: center;
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-text-light);
 }
 
 .login-extraText a {
-  color: #6c63ff;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
 }
 
 .login-extraText a:hover {
   text-decoration: underline;
+}
+
+
+/* ===========================
+   Responsive Styles
+   =========================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .login-container {
+    flex-direction: column;
+    height: auto;
+    padding: var(--space-lg);
+  }
+
+  .login-leftSection,
+  .login-rightSection {
+    width: 100%;
+    flex: unset;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .login-formBox {
+    max-width: 100%;
+    padding: var(--space-lg);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .login-container {
+    padding: var(--space-md);
+  }
+
+  .login-leftSection h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-leftSection p {
+    font-size: 0.95rem;
+  }
+
+  .login-formBox h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-input {
+    padding: 0.7rem;
+    font-size: var(--fs-base);
+  }
+
+  .login-button {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
 }
