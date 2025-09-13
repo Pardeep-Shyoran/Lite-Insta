@@ -2,8 +2,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from '../pages/Home/Home'
 import Login from '../pages/Login/Login'
 import Register from '../pages/Register/Register'
-import PageNotFound from '../pages/PageNotFound/PageNotFound'
-import Navbar from '../components/Navbar/NavBar'
+import PageNotFound from '../pages/PageNotFound/PageNotFound';
 
 const MainRoutes = () => {
 
