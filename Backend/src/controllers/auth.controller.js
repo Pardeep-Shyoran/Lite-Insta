@@ -7,7 +7,7 @@ const uploadFile = require("../services/storage.service");
 // Register API function
 
 async function registerController(req, res) {
-	const { username, password } = req.body;
+	const { username, fullName, email, password, confirmPassword } = req.body;
 	const file = req.file;
 
 
@@ -16,6 +16,12 @@ async function registerController(req, res) {
 	if (isUserAlreadyExists) {
 		return res.status(400).json({
 			message: "User Already Exists...",
+		});
+	}
+
+	if(password !== confirmPassword){
+		return res.status(400).json({
+			message: "Password and Confirm Password do not match",
 		});
 	}
 
@@ -36,6 +42,8 @@ async function registerController(req, res) {
 		username,
 		password: await bcrypt.hash(password, 10),
 		profilePic: profilePicUrl,
+		fullName,
+		email,
 	});
 
 	const token = jwt.sign(

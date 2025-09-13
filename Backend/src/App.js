@@ -6,7 +6,8 @@ const cors = require('cors')
 
 const App = express()
 
-App.use(cors());
+// Allow CORS from the frontend and allow credentials (cookies)
+App.use(cors({ origin: true, credentials: true }));
 App.use(express.json())
 App.use(cookieParser())
 App.use('/api/auth', authRoutes)
