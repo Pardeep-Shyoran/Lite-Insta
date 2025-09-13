@@ -1,0 +1,127 @@
+/* Login.module.css */
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #f9f9ff;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-leftSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f0edff;
+  padding: 2rem;
+  text-align: center;
+}
+
+.login-leftSection h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.login-leftSection p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.login-rightSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-formBox {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.login-formBox h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #222;
+}
+
+.login-formGroup {
+  margin-bottom: 1rem;
+}
+
+.login-label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.login-input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.login-error {
+  color: #e63946;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #6c63ff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-button:hover {
+  background-color: #574fd1;
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-extraText {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-extraText a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-extraText a:hover {
+  text-decoration: underline;
+}

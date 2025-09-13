@@ -32,8 +32,6 @@ export const registerUser = createAsyncThunk(
 
             const { data } = await axios.post(`${backendURL}/api/auth/register`, formData, config);
             
-            // console.log(data.message);
-            
             return data;
 
         } catch (error) {
@@ -54,13 +52,17 @@ export const loginUser = createAsyncThunk(
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                // allow cookies to be included in the response
+                withCredentials: true,
             }
-            const { data } = await axios.post(`${backendURL}/api/auth/login`,
+
+            const { data } = await axios.post(
+                `${backendURL}/api/auth/login`,
                 { username, password },
                 config
             )
-            localStorage.setItem("Token", data.token);
-            console.log(data);
+
+            // console.log(data);
             
             return data;
         } catch (error) {

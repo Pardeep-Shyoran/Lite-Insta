@@ -7,3 +7,6 @@ const instance = axios.create({
 });
 
 export default instance;
+
+// Ensure browser includes cookies on cross-site requests
+instance.defaults.withCredentials = true;
