@@ -1,15 +1,32 @@
 import { Helmet } from "react-helmet"
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../../features/Auth/authActions";
+import styles from "./Login.module.css";
+import { useEffect } from "react";
 
 const Login = () => {
 
-  const { register, reset, handleSubmit } = useForm();
+  const {loading, success, error} = useSelector(state => state.authReducer);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  function LoginHandler(data) {
-    console.log(data);
-    reset();
+  const { register, handleSubmit } = useForm();
+
+  function LoginHandler(user) {
+    // console.log(user);
+    dispatch(loginUser(user));
   }
+
+  useEffect(() => {
+    if(loading){
+      console.log("Loading...");
+    }
+    if(success){
+      navigate("/");
+    }
+  })
 
   return (
     <>

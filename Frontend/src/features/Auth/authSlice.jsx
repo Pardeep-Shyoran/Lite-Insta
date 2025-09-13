@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, registerUser } from "./authActions";
 
-const Token = localStorage.getItem("Token") ? localStorage.getItem("Token") : null;
 
 const initialState = {
   loading: false,
   userInfo: {},
-  Token,
   error: null,
   success: false,
+  message: null,
 };
 
 const authSlice = createSlice({
@@ -21,12 +20,14 @@ const authSlice = createSlice({
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.message = "Registering the User...";
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
         state.success = true;
         state.userInfo = action.payload.user;
-        state.Token = action.payload.token;
+        state.message = action.payload.message;
+        
       })
       .addCase(registerUser.rejected, (state, {payload}) => {
         state.loading = false;
@@ -41,7 +42,6 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.userInfo = action.payload.user;
-        state.Token = action.payload.token;
         state.success = true;
       })
       .addCase(loginUser.rejected, (state, {payload}) => {

@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify"
-import styles from "./Register.module.css";
 import { nanoid } from "@reduxjs/toolkit";
 import { registerUser } from "../../features/Auth/authActions";
+import styles from "./Register.module.css";
 
 const Register = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, error, success } = useSelector(
+  const { loading, error, success, userInfo, message } = useSelector(
     (state) => state.authReducer
   );
 
@@ -30,14 +30,22 @@ const Register = () => {
 
     // console.log(user);
     dispatch(registerUser(user));
-    toast.success("Registered successfully!");
   }
-
+  
   useEffect(() => {
+    if (loading) {
+      toast.info(message || "Registering ...");
+    }
+    if (error) {
+      toast.error(error);
+    }
     if (success) {
+      // console.log(userInfo);
+      // console.log(message);
+      toast.success(message || "Registration successful!");
       navigate("/");
     }
-  }, [success, navigate]);
+  }, [success, navigate, loading, userInfo, message, error]);
 
   return (
     <>
