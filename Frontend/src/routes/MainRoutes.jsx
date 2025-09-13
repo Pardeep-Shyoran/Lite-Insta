@@ -7,13 +7,13 @@ import Navbar from '../components/Navbar/NavBar'
 
 const MainRoutes = () => {
 
-    const location = useLocation();
+    // const location = useLocation();
 
-    const isFound = location.pathname === '/404' || !['/', '/login', '/register'].includes(location.pathname);
+    // const isFound = location.pathname === '/404' || !['/', '/login', '/register'].includes(location.pathname);
 
     return (
         <>
-            {!isFound && <Navbar />}
+            {/* {!isFound && <Navbar />} */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
