@@ -14,9 +14,9 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setCredentials: (state, action) => {
-      state.userInfo = action.payload;
-    },
+    // setCredentials: (state, action) => {
+    //   state.userInfo = action.payload;
+    // },
   },
   
   extraReducers: (builder) => {
