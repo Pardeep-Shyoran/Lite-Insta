@@ -10,10 +10,11 @@ const upload = multer({
 const router = express.Router()
 
 
-router.post('/register', 
-    upload.single("image"), 
-    registerController
-)
+// register and login handlers should directly handle the response.
+// Chaining authMiddleware and userDetailsController after register/login
+// causes "Can't set headers after they are sent" or unexpected 401s because
+// registerController/loginController already send a response.
+router.post('/register', upload.single("image"), registerController)
 router.post('/login', loginController)
 router.get('/logout', logoutController)
 router.get('/user', authMiddleware, userDetailsController)

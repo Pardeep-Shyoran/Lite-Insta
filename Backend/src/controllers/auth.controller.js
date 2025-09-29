@@ -61,9 +61,18 @@ async function registerController(req, res) {
 
 	res.cookie("token", token, cookieOptions);
 
+	// don't return password (even if hashed) in the response
+	const safeUser = {
+		id: user._id,
+		username: user.username,
+		profilePic: user.profilePic,
+		fullName: user.fullName,
+		email: user.email,
+	};
+
 	res.status(201).json({
 		message: "User Created Successfully...",
-		user,
+		user: safeUser,
 	});
 }
 
@@ -72,9 +81,8 @@ async function registerController(req, res) {
 async function loginController(req, res) {
 	const { username, password } = req.body;
 
-	const user = await userModel.findOne({
-		username,
-	});
+	// password field is marked select:false in the schema, so explicitly include it here
+	const user = await userModel.findOne({ username }).select('+password');
 
 	if (!user) {
 		return res.status(400).json({
@@ -110,6 +118,9 @@ async function loginController(req, res) {
 		user: {
 			username: user.username,
 			id: user._id,
+			profilePic: user.profilePic,
+			fullName: user.fullName,
+			email: user.email,
 		},
 	});
 }
@@ -122,6 +133,8 @@ async function userDetailsController(req, res) {
 		message: "User Details Fetched Successfully...",
 		user,
 	});
+	// log for debugging; use console.log (confirm.log is undefined and will throw)
+	console.log("User Details Sent:", user);
 }
 
 // LogOut API function

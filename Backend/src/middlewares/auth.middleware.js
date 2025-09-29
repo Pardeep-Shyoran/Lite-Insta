@@ -16,9 +16,10 @@ async function authMiddleware(req, res, next) {
 
 		const user = await userModel.findOne({
 			_id: decoded.id,
-		});
+		}).select("-password -confirmPassword");
 
 		req.user = user
+		// console.log("Authenticated User:", user);
 
 		next();
 	} catch (err) {
