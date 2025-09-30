@@ -131,10 +131,16 @@ async function userDetailsController(req, res) {
 
 	res.status(200).json({
 		message: "User Details Fetched Successfully...",
-		user,
+		user: {
+			username: user.username,
+			id: user._id,
+			profilePic: user.profilePic,
+			fullName: user.fullName,
+			email: user.email,
+		},
 	});
 	// log for debugging; use console.log (confirm.log is undefined and will throw)
-	console.log("User Details Sent:", user);
+	// console.log("User Details Sent:", user);
 }
 
 // LogOut API function
