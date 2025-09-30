@@ -97,19 +97,19 @@ export const fetchCurrentUser = createAsyncThunk(
     }
 )
 
-// export const logoutUser = createAsyncThunk(
-//     'api/auth/logout',
-//     async (_, { rejectWithValue }) => {
-//         try {
-//             const config = { withCredentials: true };
-//             const { data } = await axios.get(`/api/auth/logout`, config);
-//             return data;
-//         } catch (error) {
-//             if (error.response && error.response.data && error.response.data.message) {
-//                 return rejectWithValue(error.response.data.message);
-//             } else {
-//                 return rejectWithValue(error.message);
-//             }
-//         }
-//     }
-// );
+export const logoutUser = createAsyncThunk(
+    'api/auth/logout',
+    async (_, { rejectWithValue }) => {
+        try {
+            const config = { withCredentials: true };
+            const { data } = await axios.get(`/api/auth/logout`, config);
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);

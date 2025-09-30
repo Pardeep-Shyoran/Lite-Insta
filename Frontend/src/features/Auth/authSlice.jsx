@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser, fetchCurrentUser } from "./authActions";
+import { loginUser, registerUser, fetchCurrentUser, logoutUser } from "./authActions";
 
 
 const initialState = {
@@ -79,6 +79,17 @@ const authSlice = createSlice({
         state.error = payload || null;
         state.isAuthChecked = true;
       })
+      
+      // Logout User
+      .addCase(logoutUser.fulfilled, (state, action) => {
+        state.userInfo = null;
+        state.success = false;
+        state.message = action.payload.message || "Logged out successfully";
+      })
+      .addCase(logoutUser.rejected, (state, { payload }) => {
+        state.error = payload || "Failed to logout";
+      })
+
       
   },
 });
