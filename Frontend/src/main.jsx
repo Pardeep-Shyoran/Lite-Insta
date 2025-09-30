@@ -5,12 +5,15 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App.jsx";
 import { ToastContainer } from "react-toastify";
+import AuthLoader from "./features/Auth/AuthLoader";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
       <ToastContainer position="bottom-right" theme="dark" />
+      <AuthLoader>
+        <App />
+      </AuthLoader>
     </BrowserRouter>
   </Provider>
 );

@@ -9,7 +9,8 @@ import {toast} from "react-toastify"
 
 const Login = () => {
 
-  const {loading, success, error, message, userInfo} = useSelector(state => state.authReducer);
+  // note: only pull the fields used by this component to avoid unused var lint errors
+  const { loading, success, error, message } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,55 +18,39 @@ const Login = () => {
     register, 
     handleSubmit, 
     reset,
-    formState: { errors, isSubmitting } 
-   } = 
+  formState: { isSubmitting } 
+  } = 
    useForm();
 
-  function LoginHandler(user) {
-    // console.log(user);
-    dispatch(loginUser(user));
+   async function LoginHandler(user) {
+    const toastId = toast.loading("Logging in...");
+    try {
+      const payload = await dispatch(loginUser(user)).unwrap();
+      toast.update(toastId, {
+        render: payload?.message || "Login Successful",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+      navigate("/profile");
+    } catch (err) {
+      toast.update(toastId, {
+        render: err || "Something went wrong",
+        type: "error",
+        isLoading: false,
+        autoClose: 5000,
+      });
+    }
   }
 
   useEffect(() => {
-    if(loading){
-      toast.info( message || "Loging in...");
-    }
-    if(error){
-      toast.error(error || "Something went wrong");
-    }
-    if(success){
-      toast.success(message || "Login Successful");
-      navigate("/");
+    if (error) {
+      toast.error(error); // handles any unexpected errors from Redux
     }
     reset();
-  }, [loading, success, navigate, message, error]);
+  }, [error, reset]);
 
   return (
-    // <>
-    //   <Helmet>
-    //     <title>Login - Lite-Insta</title>
-    //     <meta name="description" content="Login to Lite-Insta to access your account." />
-    //   </Helmet>
-    //   <div>
-    //     <div>
-    //       <h1>Login Page</h1>
-    //       <form onSubmit={handleSubmit(LoginHandler)} method="POST">
-    //         <div>
-    //           <label>Username: </label>
-    //           <input type="text" {...register('username')} />
-    //         </div>
-
-    //         <div>
-    //           <label>Password: </label>
-    //           <input type="password" {...register('password')} />
-    //         </div>
-
-    //         <button type="submit">Login</button>
-    //         <p>Don't have an Account? <Link to="/register">Register</Link></p>
-    //       </form>
-    //     </div>
-    //   </div>
-    // </>
 
     <>
       <Helmet>

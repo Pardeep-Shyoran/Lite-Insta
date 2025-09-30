@@ -1,7 +1,7 @@
 import axios from "../../api/axiosconfig";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const backendURL = import.meta.env.VITE_BACKEND_URL || import.meta.env.VITE_API_URL;
+// axios instance already has baseURL set from env; avoid double-prefixing
 
 export const registerUser = createAsyncThunk(
     'api/auth/register',
@@ -30,7 +30,9 @@ export const registerUser = createAsyncThunk(
                 withCredentials: true,
             }
 
-            const { data } = await axios.post(`${backendURL}/api/auth/register`, formData, config);
+            const { data } = await axios.post(`/api/auth/register`, formData, config);
+
+            console.log(data);
             
             return data;
 
@@ -57,7 +59,7 @@ export const loginUser = createAsyncThunk(
             }
 
             const { data } = await axios.post(
-                `${backendURL}/api/auth/login`,
+                `/api/auth/login`,
                 { username, password },
                 config
             )
@@ -74,3 +76,40 @@ export const loginUser = createAsyncThunk(
         }
     }
 )
+
+export const fetchCurrentUser = createAsyncThunk(
+    'api/auth/fetchCurrentUser',
+    async (_, { rejectWithValue }) => {
+        try {
+            const config = { withCredentials: true };
+            const { data } = await axios.get(`/api/auth/user`, config);
+            // console.log(data);
+            
+            // backend returns { message, user }
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+)
+
+// export const logoutUser = createAsyncThunk(
+//     'api/auth/logout',
+//     async (_, { rejectWithValue }) => {
+//         try {
+//             const config = { withCredentials: true };
+//             const { data } = await axios.get(`/api/auth/logout`, config);
+//             return data;
+//         } catch (error) {
+//             if (error.response && error.response.data && error.response.data.message) {
+//                 return rejectWithValue(error.response.data.message);
+//             } else {
+//                 return rejectWithValue(error.message);
+//             }
+//         }
+//     }
+// );

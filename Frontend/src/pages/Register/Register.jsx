@@ -47,9 +47,11 @@ const Register = () => {
     if (success) {
       toast.success(message || "Registration successful!");
       reset();
-      navigate("/");
+      // console.log(userInfo);
+      
+      navigate("/profile");
     }
-  }, [success, navigate, loading, message, error]);
+  }, [success, navigate, loading, message, error, reset, userInfo]);
 
   return (
     <>

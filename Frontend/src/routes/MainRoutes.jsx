@@ -1,27 +1,65 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
-import Home from '../pages/Home/Home'
-import Login from '../pages/Login/Login'
-import Register from '../pages/Register/Register'
-import PageNotFound from '../pages/PageNotFound/PageNotFound'
-import Navbar from '../components/Navbar/Navbar'
+import { Route, Routes, useLocation } from "react-router-dom";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import Navbar from "../components/Navbar/Navbar";
+import Profile from "../pages/Profile/Profile";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MainRoutes = () => {
+  const location = useLocation();
 
-    const location = useLocation();
+  const { userInfo } = useSelector((state) => state.authReducer);
 
-    const isFound = location.pathname === '/404' || !['/', '/login', '/register'].includes(location.pathname);
+  // Define valid paths where Navbar should be shown
+  const validPaths = ["/", "/login", "/register", "/profile"];
 
-    return (
-        <>
-            {!isFound && <Navbar />}
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="*" element={<PageNotFound />} />
-            </Routes>
-        </>
-    )
-}
+  const hideNavbar = !validPaths.includes(location.pathname);
 
-export default MainRoutes
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route
+          path="/login"
+          element={
+            userInfo && userInfo.id ? (
+              <Navigate to="/profile" replace />
+            ) : (
+              <Login />
+            )
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            userInfo && userInfo.id ? (
+              <Navigate to="/profile" replace />
+            ) : (
+              <Register />
+            )
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            userInfo && userInfo.id ? (
+              <Profile />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
+  );
+};
+
+export default MainRoutes;
