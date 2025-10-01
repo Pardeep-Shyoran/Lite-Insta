@@ -35,7 +35,7 @@ const UserPosts = () => {
 }, [dispatch]);
 
 
-  console.log('postInfo:', postInfo);
+  // console.log('postInfo:', postInfo);
 
   return (
     <div className={style.UserPosts}>
