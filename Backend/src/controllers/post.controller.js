@@ -42,7 +42,26 @@ async function getPostController(req, res) {
 }
 
 
+async function getAllPostsController(req, res) {
+    try {
+        // Fetch all posts and populate user info
+        const posts = await postModel.find()
+            .populate('user', 'username profilePic')
+            .sort({ createdAt: -1 }); // optional: latest posts first
+
+        res.status(200).json({
+            message: "All Posts fetched successfully...",
+            posts,
+        });
+    } catch (error) {
+        console.error("Error fetching all posts:", error);
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+}
+
+
 module.exports = {
 	createPostController,
 	getPostController,
+    getAllPostsController,
 };
