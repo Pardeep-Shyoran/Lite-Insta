@@ -1,0 +1,130 @@
+.create-post {
+  width: 90%;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  margin: 6rem auto 2rem auto;
+  border-radius: 2rem;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-formGroupWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-bg-light);
+  box-shadow: var(--shadow-md);
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+
+.post-input {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  background-color: var(--color-bg-accent);
+  color: var(--color-text-dark);
+}
+
+.preview-container {
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.preview-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  padding: 5px;
+  background: var(--color-bg-accent);
+}
+
+.post-button {
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+}
+
+.post-button:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+}
+
+/* ✅ Responsive Tweaks */
+@media (max-width: 1024px) {
+  .create-post {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .post-formGroupWrapper {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-post {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  .post-formGroupWrapper {
+    padding: 1.2rem;
+  }
+
+  .post-button {
+    align-self: center;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-post {
+    width: 100%;
+    margin: 4rem auto 1rem auto;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  .post-formGroupWrapper {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .post-input {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .preview-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .post-button {
+    font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+  }
+}

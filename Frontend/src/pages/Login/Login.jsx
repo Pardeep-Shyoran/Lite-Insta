@@ -10,7 +10,7 @@ import {toast} from "react-toastify"
 const Login = () => {
 
   // note: only pull the fields used by this component to avoid unused var lint errors
-  const { loading, success, error, message } = useSelector((state) => state.authReducer);
+  const { error } = useSelector((state) => state.authReducer || {});
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

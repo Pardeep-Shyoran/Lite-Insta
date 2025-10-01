@@ -8,7 +8,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { loading, success, error, userInfo, message } = useSelector((state) => state.authReducer);
+  const { userInfo } = useSelector((state) => state.authReducer || {});
   // console.log("userInfo:", userInfo);
 
   const LogoutHandler = async () => {
@@ -34,6 +34,10 @@ const UserProfile = () => {
     }
   }
 
+  const createPost = () => {
+    navigate("/createpost");
+  }
+
   return (
     <div className={styles.userProfile}>
       {userInfo && userInfo.profilePic && (
@@ -50,7 +54,10 @@ const UserProfile = () => {
         <p>Bio: {userInfo?.bio || "No Bio"}</p>
       </div>
 
+      <div className={styles.ProfileActions}>
       <button className={styles.logoutHandler} type="submit" onClick={LogoutHandler}>Logout</button>
+      <button className={styles.createPost} type="submit" onClick={createPost}>Create Post</button>
+      </div>
     </div>
   );
 };

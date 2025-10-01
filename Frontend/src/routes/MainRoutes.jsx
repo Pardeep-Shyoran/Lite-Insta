@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Profile from "../pages/Profile/Profile";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import CreatePost from "../pages/CreatePost/CreatePost";
 
 const MainRoutes = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const MainRoutes = () => {
   const { userInfo } = useSelector((state) => state.authReducer);
 
   // Define valid paths where Navbar should be shown
-  const validPaths = ["/", "/login", "/register", "/profile"];
+  const validPaths = ["/", "/login", "/register", "/profile", "/createpost"];
 
   const hideNavbar = !validPaths.includes(location.pathname);
 
@@ -50,6 +51,17 @@ const MainRoutes = () => {
           element={
             userInfo && userInfo.id ? (
               <Profile />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route
+          path="/createpost"
+          element={
+            userInfo && userInfo.id ? (
+              <CreatePost />
             ) : (
               <Navigate to="/login" replace />
             )
