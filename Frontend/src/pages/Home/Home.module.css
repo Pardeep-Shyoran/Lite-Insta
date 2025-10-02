@@ -1,6 +1,6 @@
 .UserPosts {
     width: 90%;
-    margin: 2rem auto;
+    margin: 6rem auto;
     padding: 1.6rem;
     border: 1px solid var(--color-border);
     border-radius: 2rem;
@@ -14,15 +14,42 @@
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    overflow: auto;
+    /* overflow: auto; */
 
+}
+
+.postHeader{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.userProfilePic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+}
+
+.ProfileUsername{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.postContent{
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    gap: 2rem;
 }
 
 .postCard {
     max-width: 100%;
+    width: 70vw;
     margin: 0 auto;
-    max-height: 80vh;
-    aspect-ratio: 3/4;
     border: 1px solid var(--color-border);
     border-radius: 1rem;
     padding: 1rem;
@@ -35,39 +62,82 @@
 }
 
 .postImage {
-    width: 100%;
-    height: auto;
-    /* max-height: 280px; */
+    width: 50%;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 1rem;
-
+    border: 1px solid var(--color-border);
+    padding: 4px;
+    background-color: var(--color-bg-light);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .caption {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--color-text);
-    margin-top: 0.8rem;
+    /* margin-top: 0.2rem; */
+}
+
+@media(max-width: 1024px) {
+    .UserPosts {
+        width: 95%;
+        margin: 1.4rem auto;
+        padding: 1.4rem;
+        gap: 2rem;
+    }
 }
 
 /* Responsive Tweaks */
 @media (max-width: 768px) {
     .UserPosts {
-        grid-template-columns: 1fr 1fr;
+        width: 90%;
+        margin: 2rem auto;
+        padding: 1.4rem;
+        gap: 2rem;
+    }
+    .ProfileUsername{
+        font-size: 1.4rem;
     }
     .postCard {
-        aspect-ratio: auto;
+        width: 100%;
+        padding: 0.8rem;
+    }
+    .postImage{
+        width: 80%;
+    }
+    .postContent{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .caption{
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
     .UserPosts {
-        grid-template-columns: 1fr;
+        width: 95%;
+        margin: 1rem auto;
+        padding: .6rem;
+        gap: 1rem;
     }
-    .postCard {
-        padding: 0.8rem;
-    }
-    .caption {
+    .ProfileUsername{
         font-size: 1rem;
     }
+    .postImage{
+        width: 100%;
+    }
+    .postCard {
+        width: 100%;
+        padding: 0.8rem;
+    }
+    .postContent{
+        gap: 0.8rem;
+    }
+    .caption {
+        font-size: 0.8rem;
+    }
 }
+
+

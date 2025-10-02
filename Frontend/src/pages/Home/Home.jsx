@@ -57,14 +57,24 @@ const Home = () => {
             )
             .map((post) => (
               <div key={post._id || post.id} className={style.postCard}>
-                {post.image && (
+                <div className={style.postHeader}>
                   <img
-                    src={post.image}
-                    alt={post.caption || "post"}
-                    className={style.postImage}
+                    className={style.userProfilePic}
+                    src={post.user.profilePic}
+                    alt=""
                   />
-                )}
-                <p>{post.caption}</p>
+                  <p className={style.ProfileUsername}>{post.user.username}</p>
+                </div>
+                <div className={style.postContent}>
+                  {post.image && (
+                    <img
+                      src={post.image}
+                      alt={post.caption || "post"}
+                      className={style.postImage}
+                    />
+                  )}
+                  <p className={style.caption}>{post.caption}</p>
+                </div>
               </div>
             ))
         ) : (
