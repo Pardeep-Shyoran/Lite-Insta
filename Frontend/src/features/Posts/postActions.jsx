@@ -2,8 +2,8 @@ import axios from '../../api/axiosconfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // Thunk to fetch all posts. Returns the backend response object
-export const getAllPosts = createAsyncThunk(
-    'post/getAllPosts',
+export const getUserPost = createAsyncThunk(
+    'post/getUserPost',
     async (_, { rejectWithValue }) => {
         try {
             const config = { withCredentials: true };
@@ -56,6 +56,22 @@ export const createPost = createAsyncThunk(
             return data; // expected { message, post }
         } catch (err) {
             console.error('Error creating post:', err);
+            return rejectWithValue(err.response?.data || err.message);
+        }
+    }
+);
+
+// Thunk to get posts for a specific userId
+export const getAllPosts = createAsyncThunk(
+    'post/getAllPosts',
+    async (userId, { rejectWithValue }) => {
+        try {
+            const config = { withCredentials: true };
+            const { data } = await axios.get(`/api/posts/all`, config);
+            console.log(`Fetched all posts`, data);
+            return data; // expected { message, posts }
+        } catch (err) {
+            console.error(`Error fetching posts for user ${userId}:`, err);
             return rejectWithValue(err.response?.data || err.message);
         }
     }

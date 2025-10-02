@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPost, getAllPosts } from "./postActions";
+import { createPost, getAllPosts, getUserPost } from "./postActions";
 
 const initialState = {
   loading: false,
   isAuthChecked: false,
   postInfo: [],
+  allPosts: [],
   error: null,
   success: false,
   message: null,
@@ -47,7 +48,28 @@ const postSlice = createSlice({
           state.error = payload;
         })
 
-        // Get All Posts
+        // Get user Posts
+        .addCase(getUserPost.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+          state.message = "Fetching all Posts...";
+        })
+        .addCase(getUserPost.fulfilled, (state, action) => {
+          state.loading = false;
+          state.success = true;
+          // Ensure posts are ordered newest-first. Backend may return oldest-first.
+          const post = action.payload.posts || [];
+          state.postInfo = Array.isArray(post)
+            ? post.slice().sort((a, b) => new Date(b.createdAt || b.created_at) - new Date(a.createdAt || a.created_at))
+            : [];
+          state.message = action.payload.message;
+        })
+        .addCase(getUserPost.rejected, (state, { payload }) => {
+          state.loading = false;
+          state.error = payload;
+        })
+
+        // Get all Posts
         .addCase(getAllPosts.pending, (state) => {
           state.loading = true;
           state.error = null;
@@ -58,8 +80,8 @@ const postSlice = createSlice({
           state.success = true;
           // Ensure posts are ordered newest-first. Backend may return oldest-first.
           const posts = action.payload.posts || [];
-          state.postInfo = Array.isArray(posts)
-            ? posts.slice().reverse().sort((a, b) => new Date(b.createdAt || b.created_at) - new Date(a.createdAt || a.created_at))
+          state.allPosts = Array.isArray(posts)
+            ? posts.slice().sort((a, b) => new Date(b.createdAt || b.created_at) - new Date(a.createdAt || a.created_at))
             : [];
           state.message = action.payload.message;
         })

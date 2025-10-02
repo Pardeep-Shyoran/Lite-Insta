@@ -23,7 +23,17 @@ const MainRoutes = () => {
     <>
       {!hideNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route
+          path="/"
+          element={
+            userInfo && userInfo.id ? (
+              <Home />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
 
         <Route
           path="/login"

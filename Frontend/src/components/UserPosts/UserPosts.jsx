@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllPosts } from '../../features/Posts/postActions';
+import { getUserPost } from '../../features/Posts/postActions';
 import style from './UserPosts.module.css'
 import { toast } from 'react-toastify';
 
@@ -13,7 +13,7 @@ const UserPosts = () => {
     const toastId = toast.loading("Posts fetching...");
 
     try {
-      const payload = await dispatch(getAllPosts()).unwrap();
+      const payload = await dispatch(getUserPost()).unwrap();
       toast.update(toastId, {
         render: payload?.message || "Posts fetched successfully",
         type: "success",
