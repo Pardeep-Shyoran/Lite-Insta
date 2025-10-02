@@ -46,7 +46,7 @@ async function getAllPostsController(req, res) {
     try {
         // Fetch all posts and populate user info
         const posts = await postModel.find()
-            .populate('user', 'username profilePic')
+            .populate('user', 'profilePic fullName')
             .sort({ createdAt: -1 }); // optional: latest posts first
 
         res.status(200).json({
