@@ -49,7 +49,7 @@ const UserPosts = () => {
               {post.image && (
                 <img src={post.image} alt={post.caption || 'post'} className={style.postImage} />
               )}
-              <p>{post.caption}</p>
+              {/* <p>{post.caption}</p> */}
             </div>
           ))
       ) : (
