@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserPost } from '../../features/Posts/postActions';
 import style from './UserPosts.module.css'
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const UserPosts = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const UserPosts = () => {
   const fetchPosts = async () => {
     const toastId = toast.loading("Posts fetching...");
 
-    try {
+    try { 
       const payload = await dispatch(getUserPost()).unwrap();
       toast.update(toastId, {
         render: payload?.message || "Posts fetched successfully",
@@ -46,10 +47,12 @@ const UserPosts = () => {
           .sort((a, b) => new Date(b.createdAt || b.created_at) - new Date(a.createdAt || a.created_at))
           .map((post) => (
             <div key={post._id || post.id} className={style.postCard}>
+              <Link to={`/post/${post._id || post.id}`} className={style.postLink}>
               {post.image && (
                 <img src={post.image} alt={post.caption || 'post'} className={style.postImage} />
               )}
               {/* <p>{post.caption}</p> */}
+              </Link>
             </div>
           ))
       ) : (

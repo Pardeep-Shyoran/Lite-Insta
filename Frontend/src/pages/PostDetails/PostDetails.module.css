@@ -1,0 +1,136 @@
+.PostDetailsPage {
+  width: 90%;
+  margin: 6rem auto;
+  padding: 1.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.5rem;
+  min-height: 70vh;
+}
+
+.postCard{
+    max-width: 100%;
+    width: 80vw;
+    margin: 0 auto;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    background-color: var(--color-white);
+    display: flex;
+    gap: 2rem;
+}
+
+.postImage{
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.postDetailsInfo{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.caption{
+    font-size: 1.6rem;
+    color: var(--color-text);
+    margin-top: 1rem;
+}
+
+.postInfoButtons{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.postInfoBtn{
+    padding: 0.8rem 1.2rem;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.updatePostBtn{
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+    text-decoration: none;
+}
+
+.updatePostBtn:hover{
+    background-color: var(--color-secondary);
+}
+
+.deletePostBtn{
+    background-color: var(--color-error);
+    color: var(--color-primary-text);
+}
+
+.deletePostBtn:hover{
+    background-color: var(--color-error-dark);
+}
+
+
+/* ----------------- */
+/* Responsive Design */
+/* ----------------- */
+
+/* Medium screens (tablets) */
+@media (max-width: 950px) {
+    .PostDetailsPage {
+    margin: 2rem auto;
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+  .postCard {
+    width: 90vw;
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+
+  .postImage,
+  .postDetailsInfo {
+    width: 100%;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+  .PostDetailsPage {
+    margin: 2rem auto;
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+
+  .postCard {
+    flex-direction: column;
+    width: 95vw;
+    padding: 1.2rem;
+  }
+
+  .postImage {
+    width: 100%;
+    aspect-ratio: 1/1; /* less tall for phones */
+  }
+
+  .caption {
+    font-size: 1rem;
+  }
+
+  .postInfoBtn {
+    font-size: 1rem;
+    padding: 0.6rem .8rem;
+  }
+}

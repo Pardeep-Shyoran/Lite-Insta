@@ -88,6 +88,7 @@
         gap: 3rem;
         padding: 3rem;
         max-height: none;
+        margin-top: 2rem;
     }
     .ProfileActions {
         position: static;
@@ -95,6 +96,13 @@
         width: 100%;
         justify-content: center;
         gap: 2rem;
+    }
+    .logoutHandler,
+    .createPost {
+        font-size: 1.3rem;
+        padding: 0.7rem 1.3rem;
+        max-width: 16rem;
+        width: auto;
     }
 }
 
@@ -122,7 +130,6 @@
     }
 
     .ProfileActions {
-        flex-direction: column;
         gap: 1rem;
         width: 100%;
     }
@@ -130,6 +137,7 @@
     .logoutHandler, .createPost {
         font-size: 1.2rem;
         padding: 0.6rem 1.2rem;
+        /* width: auto; */
     }
 }
 

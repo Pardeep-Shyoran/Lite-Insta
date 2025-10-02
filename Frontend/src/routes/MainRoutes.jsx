@@ -8,6 +8,9 @@ import Profile from "../pages/Profile/Profile";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CreatePost from "../pages/CreatePost/CreatePost";
+import EditProfile from "../pages/EditProfile/EditProfile";
+import PostDetails from "../pages/PostDetails/PostDetails";
+import UpdatePost from "../pages/UpdatePost/UpdatePost";
 
 const MainRoutes = () => {
   const location = useLocation();
@@ -15,9 +18,21 @@ const MainRoutes = () => {
   const { userInfo } = useSelector((state) => state.authReducer);
 
   // Define valid paths where Navbar should be shown
-  const validPaths = ["/", "/login", "/register", "/profile", "/createpost"];
+  const validPaths = [
+    "/",
+    "/login",
+    "/register",
+    "/profile",
+    "/createpost",
+    "/editprofile",
+    "/post/${id}",
+    "/update-post/${id}",
+  ];
 
-  const hideNavbar = !validPaths.includes(location.pathname);
+  const hideNavbar =
+    !validPaths.includes(location.pathname) &&
+    !/^\/post\/[^/]+$/.test(location.pathname) &&
+    !/^\/update-post\/[^/]+$/.test(location.pathname);
 
   return (
     <>
@@ -72,6 +87,39 @@ const MainRoutes = () => {
           element={
             userInfo && userInfo.id ? (
               <CreatePost />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route
+          path="/editprofile"
+          element={
+            userInfo && userInfo.id ? (
+              <EditProfile />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route
+          path="/post/:id"
+          element={
+            userInfo && userInfo.id ? (
+              <PostDetails />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route
+          path="/update-post/:id"
+          element={
+            userInfo && userInfo.id ? (
+              <UpdatePost />
             ) : (
               <Navigate to="/login" replace />
             )

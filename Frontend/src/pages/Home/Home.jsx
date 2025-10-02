@@ -63,7 +63,7 @@ const Home = () => {
                     src={post.user.profilePic}
                     alt=""
                   />
-                  <p className={style.ProfileUsername}>{post.user.username}</p>
+                  <p className={style.ProfileUsername}>{post.user.fullName}</p>
                 </div>
                 <div className={style.postContent}>
                   {post.image && (

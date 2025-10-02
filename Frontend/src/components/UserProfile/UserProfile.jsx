@@ -38,6 +38,10 @@ const UserProfile = () => {
     navigate("/createpost");
   }
 
+  const editProfile = () => {
+    navigate("/editprofile");
+  }
+
   return (
     <div className={styles.userProfile}>
       {userInfo && userInfo.profilePic && (
@@ -57,6 +61,7 @@ const UserProfile = () => {
       <div className={styles.ProfileActions}>
       <button className={styles.logoutHandler} type="submit" onClick={LogoutHandler}>Logout</button>
       <button className={styles.createPost} type="submit" onClick={createPost}>Create Post</button>
+      <button className={styles.createPost} type="submit" onClick={editProfile}>Edit Profile</button>
       </div>
     </div>
   );
