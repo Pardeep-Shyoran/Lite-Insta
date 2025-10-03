@@ -30,6 +30,7 @@ async function registerController(req, res) {
 		try {
 			const uploadResult = await uploadFile(file.buffer, `${uuidv4()}`);
 			profilePicUrl = uploadResult.url;
+			imagekitId = uploadResult.fileId;
 		} catch (error) {
 			return res.status(500).json({
 				message: "Failed to upload profile picture",
@@ -44,6 +45,7 @@ async function registerController(req, res) {
 		profilePic: profilePicUrl,
 		fullName,
 		email,
+		imagekitFileId: file ? imagekitId : null,
 	});
 
 	const token = jwt.sign(
