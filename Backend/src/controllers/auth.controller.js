@@ -146,6 +146,7 @@ async function userDetailsController(req, res) {
       profilePic: user.profilePic,
       fullName: user.fullName,
       email: user.email,
+      bio: user.bio,
     },
   });
   // log for debugging; use console.log (confirm.log is undefined and will throw)
@@ -167,7 +168,7 @@ async function logoutController(req, res) {
 async function updateUserController(req, res) {
   const user = req.user;
 
-  const { fullName, username, password, confirmPassword } = req.body;
+  const { fullName, username, bio, password, confirmPassword } = req.body;
   const file = req.file;
 
   // Password confirmation
@@ -229,6 +230,7 @@ async function updateUserController(req, res) {
   const updatedData = {
     username: username || user.username,
     email: user.email,
+    bio: bio || user.bio,
     fullName: fullName || user.fullName,
     profilePic: profilePicUrl,
     imagekitFileId: imagekitId,
@@ -259,6 +261,7 @@ async function updateUserController(req, res) {
       profilePic: updatedUser.profilePic,
       fullName: updatedUser.fullName,
       email: updatedUser.email,
+      bio: updatedUser.bio,
     },
   });
 }
