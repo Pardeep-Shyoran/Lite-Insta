@@ -113,3 +113,35 @@ export const logoutUser = createAsyncThunk(
         }
     }
 );
+
+export const updateProfile = createAsyncThunk(
+    'api/auth/updateProfile',
+    async (profileData, { rejectWithValue }) => {
+        try {
+            const { fullName, username, email, bio, profilePic } = profileData;
+            const formData = new FormData();
+            if (profilePic) {
+                const file = profilePic instanceof File ? profilePic : (profilePic[0] || null);
+                if (file) formData.append('image', file);
+            }
+            if (fullName) formData.append('fullName', fullName);
+            if (username) formData.append('username', username);
+            if (email) formData.append('email', email);
+            if (bio) formData.append('bio', bio);
+            const config = {
+                headers: {
+                    // Let browser set Content-Type with boundary
+                },
+                withCredentials: true,
+            };
+            const { data } = await axios.patch(`/api/auth/user`, formData, config);
+            return data;
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                return rejectWithValue(error.response.data.message);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);

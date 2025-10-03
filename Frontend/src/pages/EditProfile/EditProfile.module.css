@@ -1,14 +1,258 @@
-.EditProfile{
-    width: 80%;
-    margin: 6rem auto 1rem;
+/* Page Title */
+.pageTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Container */
+.editProfileContainer {
+    width: 90%;
+    max-width: 600px;
+    margin: 4rem auto 2rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 80vh;
-    font-size: 2rem;
+    font-size: 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: var(--color-white);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: var(--color-surface);
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.editProfileContainer:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Form */
+.editProfileForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Form Group */
+.formGroup {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+    display: block;
+}
+
+/* File Input Custom Styling */
+.fileInputWrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 120px;
+    border: 2px dashed var(--color-border);
+    border-radius: 0.75rem;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.fileInputWrapper:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(29, 161, 242, 0.05);
+}
+
+.fileInputWrapper.dragover {
+    border-color: var(--color-primary);
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.fileInputLabel {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    pointer-events: none;
+    text-align: center;
+}
+
+.fileInput {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Text Inputs and Textarea */
+.formGroup input[type="text"],
+.formGroup textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background-color: #f8f9fa;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.formGroup input[type="text"]::placeholder,
+.formGroup textarea::placeholder {
+    color: #888;
+}
+
+.formGroup input[type="text"]:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.formGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.5;
+}
+
+/* Save Button */
+.saveButton {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: #ffffff;
+    padding: 1.25rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+    box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.saveButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.saveButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 161, 242, 0.4);
+}
+
+.saveButton:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.saveButton:disabled {
+    background: var(--color-primary-light);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.saveButton:disabled::before {
+    display: none;
+}
+
+/* Error Messages */
+.error {
+    color: var(--color-error);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.error::before {
+    content: '⚠️';
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .pageTitle {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .editProfileContainer {
+        width: 95%;
+        margin: 2rem auto 1rem;
+        padding: 1.5rem;
+    }
+
+    .editProfileForm {
+        max-width: 100%;
+    }
+
+    .formGroup {
+        margin-bottom: 1.5rem;
+    }
+
+    .formGroup label {
+        font-size: 1rem;
+    }
+
+    .formGroup input[type="text"],
+    .formGroup textarea {
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
+    }
+
+    .fileInputWrapper {
+        height: 100px;
+    }
+
+    .fileInputLabel {
+        font-size: 0.9rem;
+    }
+
+    .saveButton {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 1.75rem;
+    }
+
+    .editProfileContainer {
+        padding: 1rem;
+    }
+
+    .formGroup input[type="text"],
+    .formGroup textarea {
+        padding: 0.75rem 0.875rem;
+    }
+
+    .saveButton {
+        padding: 0.875rem 1.5rem;
+    }
 }
 

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser, fetchCurrentUser, logoutUser } from "./authActions";
+import { loginUser, registerUser, fetchCurrentUser, logoutUser, updateProfile } from "./authActions";
 
 
 const initialState = {
@@ -90,7 +90,25 @@ const authSlice = createSlice({
         state.error = payload || "Failed to logout";
       })
 
-      
+      // Update Profile
+      .addCase(updateProfile.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.success = false;
+        state.message = "Updating profile...";
+      })
+      .addCase(updateProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        const user = action.payload.user || {};
+        if (user._id && !user.id) user.id = user._id;
+        state.userInfo = user;
+        state.message = action.payload.message || "Profile updated successfully";
+      })
+      .addCase(updateProfile.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload || "Failed to update profile";
+      });
   },
 });
 
