@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .post-formGroupWrapper {
@@ -22,6 +23,13 @@
   width: 100%;
   max-width: 700px;
   margin: auto;
+}
+
+.post-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .post-input {
@@ -61,14 +69,25 @@
   border: none;
   border-radius: 2rem;
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: var(--fs-lg);
   transition: background-color 0.3s ease;
-  align-self: flex-end;
+}
+
+.post-button:hover {
+  background-color: var(--color-primary-hover);
 }
 
 .post-button:disabled {
   background-color: var(--color-border);
   cursor: not-allowed;
+}
+
+.error {
+  color: var(--color-error);
+  font-size: var(--fs-sm);
+  margin-top: var(--space-xs);
+  text-align: left;
+  width: 100%;
 }
 
 /* ✅ Responsive Tweaks */

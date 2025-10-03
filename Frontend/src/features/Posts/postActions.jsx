@@ -68,7 +68,7 @@ export const getAllPosts = createAsyncThunk(
         try {
             const config = { withCredentials: true };
             const { data } = await axios.get(`/api/posts/all`, config);
-            console.log(`Fetched all posts`, data);
+            // console.log(`Fetched all posts`, data);
             return data; // expected { message, posts }
         } catch (err) {
             console.error(`Error fetching posts for user ${userId}:`, err);
@@ -99,7 +99,7 @@ export const updatePost = createAsyncThunk(
     async ({ postId, updateData }, { rejectWithValue }) => {
         try {
             const config = { withCredentials: true };
-            const { data } = await axios.put(`/api/posts/${postId}`, updateData, config);
+            const { data } = await axios.patch(`/api/posts/${postId}`, updateData, config);
             return data; // expected { message, post }
         } catch (err) {
             console.error(`Error updating post ${postId}:`, err);

@@ -33,7 +33,7 @@ const Home = () => {
 
     fetchAllPosts();
   }, [dispatch]);
-  console.log("allpost in Home:", allPosts);
+  // console.log("allpost in Home:", allPosts);
 
   return (
     <>

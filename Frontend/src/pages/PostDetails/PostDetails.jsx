@@ -10,7 +10,7 @@ const PostDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { postDetail } = useSelector((state) => state.postReducer || {});
-  console.log("postDetail:", postDetail);
+  // console.log("postDetail:", postDetail);
 
   useEffect(() => {
     const fetchPostDetail = async () => {

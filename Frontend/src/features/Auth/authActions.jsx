@@ -32,7 +32,7 @@ export const registerUser = createAsyncThunk(
 
             const { data } = await axios.post(`/api/auth/register`, formData, config);
 
-            console.log(data);
+            // console.log(data);
             
             return data;
 
