@@ -5,9 +5,9 @@ const userModel = require("../models/user.model");
 const uploadFile = require("../services/storage.service");
 const ImageKit = require("imagekit");
 const imagekit = new ImageKit({
-	publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
-	privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-	urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 });
 
 // Register API function
@@ -177,16 +177,19 @@ async function updateUserController(req, res) {
     });
   }
 
-   // ✅ Username validation
+  // ✅ Username validation
   if (username) {
     const newUsername = username.trim();
     if (newUsername.length < 3 || newUsername.length > 20) {
-      return res.status(400).json({ message: "Username must be 3–20 characters" });
+      return res
+        .status(400)
+        .json({ message: "Username must be 3–20 characters" });
     }
     const usernameRegex = /^[a-zA-Z0-9._]+$/;
     if (!usernameRegex.test(newUsername)) {
       return res.status(400).json({
-        message: "Username can only contain letters, numbers, underscores, and dots",
+        message:
+          "Username can only contain letters, numbers, underscores, and dots",
       });
     }
     const existingUser = await userModel.findOne({ username: newUsername });
@@ -199,29 +202,28 @@ async function updateUserController(req, res) {
   let profilePicUrl = user.profilePic;
   let imagekitId = user.imagekitFileId;
 
-if (file) {
-  try {
-    const uploadResult = await uploadFile(file.buffer, `${uuidv4()}`);
+  if (file) {
+    try {
+      const uploadResult = await uploadFile(file.buffer, `${uuidv4()}`);
 
-    if (user.imagekitFileId) {
-      try {
-        await imagekit.deleteFile(user.imagekitFileId);
-      } catch (delErr) {
-        // Optional: log but don’t break the update flow
-        // console.warn("Old profile pic delete failed:", delErr.message);
+      if (user.imagekitFileId) {
+        try {
+          await imagekit.deleteFile(user.imagekitFileId);
+        } catch (delErr) {
+          // Optional: log but don’t break the update flow
+          // console.warn("Old profile pic delete failed:", delErr.message);
+        }
       }
+
+      profilePicUrl = uploadResult.url;
+      imagekitId = uploadResult.fileId;
+    } catch (error) {
+      return res.status(500).json({
+        message: "Failed to upload profile picture",
+        error: error.message,
+      });
     }
-
-    profilePicUrl = uploadResult.url;
-    imagekitId = uploadResult.fileId;
-  } catch (error) {
-    return res.status(500).json({
-      message: "Failed to upload profile picture",
-      error: error.message,
-    });
   }
-}
-
 
   // Build updated data
   const updatedData = {
