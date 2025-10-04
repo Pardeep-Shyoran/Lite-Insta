@@ -66,6 +66,7 @@ async function registerController(req, res) {
     httpOnly: true,
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production",
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   };
 
   res.cookie("token", token, cookieOptions);
@@ -118,6 +119,7 @@ async function loginController(req, res) {
     httpOnly: true,
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production",
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   };
 
   res.cookie("token", token, cookieOptions);
@@ -158,6 +160,7 @@ async function logoutController(req, res) {
   const cookieOptions = {
     sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     secure: process.env.NODE_ENV === "production",
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   };
   res.clearCookie("token", cookieOptions);
   res.status(200).json({

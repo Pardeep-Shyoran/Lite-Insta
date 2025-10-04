@@ -7,7 +7,7 @@ const cors = require('cors')
 const App = express()
 
 // Allow CORS from the frontend and allow credentials (cookies)
-App.use(cors({ origin: true, credentials: true }));
+App.use(cors({ origin: "https://lite-insta.vercel.app", credentials: true }));
 App.use(express.json())
 App.use(cookieParser())
 App.use('/api/auth', authRoutes)
