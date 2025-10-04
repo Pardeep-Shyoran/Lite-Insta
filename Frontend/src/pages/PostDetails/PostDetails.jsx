@@ -14,23 +14,23 @@ const PostDetails = () => {
 
   useEffect(() => {
     const fetchPostDetail = async () => {
-      const toastId = toast.loading("Post detail fetching...");
+      // const toastId = toast.loading("Post detail fetching...");
       try {
         const payload = await dispatch(getPostDetail(id)).unwrap();
-        toast.update(toastId, {
-          render: payload?.message || "Post Detail fetched successfully",
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
-        });
+        // toast.update(toastId, {
+        //   render: payload?.message || "Post Detail fetched successfully",
+        //   type: "success",
+        //   isLoading: false,
+        //   autoClose: 3000,
+        // });
       } catch (err) {
         const message = err?.message || err || "Something went wrong";
-        toast.update(toastId, {
-          render: message,
-          type: "error",
-          isLoading: false,
-          autoClose: 5000,
-        });
+        // toast.update(toastId, {
+        //   render: message,
+        //   type: "error",
+        //   isLoading: false,
+        //   autoClose: 5000,
+        // });
       }
     };
 
