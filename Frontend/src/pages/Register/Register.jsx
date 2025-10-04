@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -23,6 +23,8 @@ const Register = () => {
     watch,
     formState: { errors, isSubmitting },
   } = useForm();
+
+  const [fileName, setFileName] = useState('Click to upload profile picture');
 
   function RegisterHandler(user) {
     if (user.password !== user.confirmPassword) {
@@ -84,11 +86,23 @@ const Register = () => {
                 <label className={styles["register-label"]}>
                   Choose Profile Pic:
                 </label>
-                <input
-                  type="file"
-                  className={styles["register-input"]}
-                  {...register("profilePic")}
-                />
+                <div className={styles.fileInputWrapper}>
+                  <input
+                    type="file"
+                    id="profilePic"
+                    className={styles.fileInput}
+                    {...register("profilePic")}
+                    accept="image/*"
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files.length > 0) {
+                        setFileName(e.target.files[0].name);
+                      } else {
+                        setFileName('Click to upload profile picture');
+                      }
+                    }}
+                  />
+                  <span className={styles.fileInputLabel}>{fileName}</span>
+                </div>
               </div>
 
               <div className={styles["register-formGroup"]}>

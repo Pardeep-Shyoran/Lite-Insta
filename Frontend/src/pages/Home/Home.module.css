@@ -12,9 +12,7 @@
     flex-wrap: wrap;
     gap: 4rem;
     justify-content: center;
-    align-items: start;
     flex-direction: column;
-    /* overflow: auto; */
 
 }
 

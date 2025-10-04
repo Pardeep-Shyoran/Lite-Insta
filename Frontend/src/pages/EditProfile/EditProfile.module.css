@@ -1,11 +1,11 @@
 /* Page Title */
 .pageTitle {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: var(--fs-xl);
     font-weight: 700;
     color: var(--color-text-dark);
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: var(--space-xl);
+    font-family: var(--font-family2);
 }
 
 /* Main Container */
@@ -16,17 +16,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1rem;
+    font-size: var(--fs-base);
     border: 1px solid var(--color-border);
-    border-radius: 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
     background: var(--color-surface);
-    padding: 2rem;
-    transition: box-shadow 0.3s ease;
-}
-
-.editProfileContainer:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    padding: var(--space-xl);
+    font-family: var(--font-family2);
 }
 
 /* Form */
@@ -39,16 +35,16 @@
 
 /* Form Group */
 .formGroup {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-lg);
     display: flex;
     flex-direction: column;
 }
 
 .formGroup label {
     font-weight: 600;
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
-    color: var(--color-text-dark);
+    margin-bottom: var(--space-sm);
+    font-size: var(--fs-base);
+    color: var(--color-text-mid);
     display: block;
 }
 
@@ -59,8 +55,8 @@
     width: 100%;
     height: 120px;
     border: 2px dashed var(--color-border);
-    border-radius: 0.75rem;
-    background-color: #fafafa;
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,19 +67,20 @@
 
 .fileInputWrapper:hover {
     border-color: var(--color-primary);
-    background-color: rgba(29, 161, 242, 0.05);
+    background-color: rgba(122, 116, 255, 0.05);
 }
 
 .fileInputWrapper.dragover {
     border-color: var(--color-primary);
-    background-color: rgba(29, 161, 242, 0.1);
+    background-color: rgba(122, 116, 255, 0.1);
 }
 
 .fileInputLabel {
-    font-size: 1rem;
+    font-size: var(--fs-base);
     color: var(--color-text-light);
     pointer-events: none;
     text-align: center;
+    font-family: var(--font-family2);
 }
 
 .fileInput {
@@ -98,28 +95,27 @@
 .formGroup input[type="text"],
 .formGroup textarea {
     width: 100%;
-    padding: 1rem 1.25rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
-    font-family: inherit;
-    background-color: #f8f9fa;
-    color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: var(--space-md);
+    font-size: var(--fs-base);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: 0.3s;
+    font-family: var(--font-family2);
+    background-color: var(--color-surface);
+    color: var(--color-text-dark);
+    outline: none;
 }
 
 .formGroup input[type="text"]::placeholder,
 .formGroup textarea::placeholder {
-    color: #888;
+    color: var(--color-text-light);
+    font-family: var(--font-family2);
 }
 
 .formGroup input[type="text"]:focus,
 .formGroup textarea:focus {
-    outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
+    box-shadow: 0 0 0 3px rgba(122, 116, 255, 0.2);
 }
 
 .formGroup textarea {
@@ -130,79 +126,47 @@
 
 /* Save Button */
 .saveButton {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
-    color: #ffffff;
-    padding: 1.25rem 3rem;
-    font-size: 1.1rem;
-    font-weight: 700;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-md) var(--space-xl);
+    font-size: var(--fs-md);
+    font-weight: 600;
     border: none;
-    border-radius: 2rem;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     align-self: center;
-    box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.saveButton::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    font-family: var(--font-family2);
 }
 
 .saveButton:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(29, 161, 242, 0.4);
-}
-
-.saveButton:hover:not(:disabled)::before {
-    left: 100%;
+    background-color: var(--color-primary-hover);
 }
 
 .saveButton:disabled {
-    background: var(--color-primary-light);
+    opacity: 0.6;
     cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-
-.saveButton:disabled::before {
-    display: none;
 }
 
 /* Error Messages */
 .error {
     color: var(--color-error);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
+    font-size: var(--fs-sm);
+    margin-top: var(--space-xs);
     font-weight: 500;
-}
-
-.error::before {
-    content: '⚠️';
-    margin-right: 0.5rem;
-    font-size: 1rem;
 }
 
 /* Media Queries */
 @media (max-width: 768px) {
     .pageTitle {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
+        font-size: var(--fs-lg);
+        margin-bottom: var(--space-lg);
     }
 
     .editProfileContainer {
         width: 95%;
         margin: 2rem auto 1rem;
-        padding: 1.5rem;
+        padding: var(--space-lg);
     }
 
     .editProfileForm {
@@ -210,17 +174,17 @@
     }
 
     .formGroup {
-        margin-bottom: 1.5rem;
+        margin-bottom: var(--space-md);
     }
 
     .formGroup label {
-        font-size: 1rem;
+        font-size: var(--fs-sm);
     }
 
     .formGroup input[type="text"],
     .formGroup textarea {
-        padding: 0.875rem 1rem;
-        font-size: 1rem;
+        padding: var(--space-sm);
+        font-size: var(--fs-base);
     }
 
     .fileInputWrapper {
@@ -228,31 +192,31 @@
     }
 
     .fileInputLabel {
-        font-size: 0.9rem;
+        font-size: var(--fs-sm);
     }
 
     .saveButton {
-        padding: 1rem 2rem;
-        font-size: 1rem;
+        padding: var(--space-sm) var(--space-lg);
+        font-size: var(--fs-base);
     }
 }
 
 @media (max-width: 480px) {
     .pageTitle {
-        font-size: 1.75rem;
+        font-size: var(--fs-md);
     }
 
     .editProfileContainer {
-        padding: 1rem;
+        padding: var(--space-md);
     }
 
     .formGroup input[type="text"],
     .formGroup textarea {
-        padding: 0.75rem 0.875rem;
+        padding: var(--space-xs);
     }
 
     .saveButton {
-        padding: 0.875rem 1.5rem;
+        padding: var(--space-sm) var(--space-md);
     }
 }
 

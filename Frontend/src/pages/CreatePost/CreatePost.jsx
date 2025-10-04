@@ -24,6 +24,8 @@ const CreatePost = () => {
 
   const [preview, setPreview] = useState(null);
 
+  const [fileName, setFileName] = useState('Click to upload post image');
+
   async function postHandler(post) {
     const toastId = toast.loading("Creating post...");
     try {
@@ -57,6 +59,9 @@ const CreatePost = () => {
     const file = e.target.files[0];
     if (file) {
       setPreview(URL.createObjectURL(file));
+      setFileName(file.name);
+    } else {
+      setFileName('Click to upload post image');
     }
   };
 
@@ -80,13 +85,17 @@ const CreatePost = () => {
           <div className={style["post-formGroupWrapper"]}>
             <div className={style["post-formGroup"]}>
               <label className={style["post-label"]}>Choose Post Image:</label>
-              <input
-                type="file"
-                accept="image/*"
-                className={style["post-input"]}
-                {...register("image", { required: "Image is Required" })}
-                onChange={handleImageChange}
-              />
+              <div className={style.fileInputWrapper}>
+                <input
+                  type="file"
+                  id="postImage"
+                  className={style.fileInput}
+                  {...register("image", { required: "Image is Required" })}
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+                <span className={style.fileInputLabel}>{fileName}</span>
+              </div>
               {errors.image && (
                 <p className={style.error}>{errors.image.message}</p>
               )}

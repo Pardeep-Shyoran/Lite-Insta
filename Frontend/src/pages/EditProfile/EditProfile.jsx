@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "../../features/Auth/authActions";
+import { toast } from "react-toastify";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const EditProfile = () => {
     (state) => state.authReducer || {}
   );
 
-  console.log("userInfo:", userInfo);
+  // console.log("userInfo:", userInfo);
 
   const [fileName, setFileName] = useState('Click to upload profile picture');
 
@@ -30,7 +31,7 @@ const EditProfile = () => {
   });
 
   useEffect(() => {
-    console.log("userInfo changed:", userInfo);
+    // console.log("userInfo changed:", userInfo);
   if (userInfo) {
     reset({
       fullName: userInfo.fullName || "",
@@ -40,9 +41,28 @@ const EditProfile = () => {
   }
 }, [userInfo, reset]);
 
-  const onSubmit = (data) => {
-    dispatch(updateProfile(data));
-  };
+const onSubmit = async (data) => {
+  const toastId = toast.loading("Updating profile...");
+  try {
+    await dispatch(updateProfile(data));
+    toast.update(toastId, {
+      render: "Profile Updated Successfully",
+      type: "success",
+      isLoading: false,
+      autoClose: 3000,
+    });
+    navigate("/profile");
+  } catch (err) {
+    toast.update(toastId, {
+      render: err?.message || "Something went wrong",
+      type: "error",
+      isLoading: false,
+      autoClose: 5000,
+    });
+  }
+};
+
+
 
 
   return (
