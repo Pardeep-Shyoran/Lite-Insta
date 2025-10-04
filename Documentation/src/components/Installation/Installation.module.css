@@ -1,0 +1,44 @@
+.paragraph {
+  margin: var(--space-lg) 0;
+  color: var(--color-text-mid);
+}
+
+.subheading {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin: 1rem 0 0.5rem 0;
+}
+
+.list {
+  margin: var(--space-lg) 0;
+  padding-left: 2rem;
+}
+
+.list li {
+  margin: 0.5rem 0;
+  color: var(--color-text-light);
+}
+
+.orderedList {
+  margin: var(--space-lg) 0;
+  padding-left: 2rem;
+}
+
+.orderedList li {
+  margin: 0.5rem 0;
+  color: var(--color-text-light);
+}
+
+.sublist {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  color: var(--color-text-light);
+}
+
+code {
+  background-color: var(--color-surface-alt);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  color: var(--color-primary);
+}

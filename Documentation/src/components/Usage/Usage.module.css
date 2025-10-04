@@ -1,0 +1,18 @@
+.paragraph {
+  margin: var(--space-lg) 0;
+  color: var(--color-text-light);
+}
+
+.orderedList {
+  margin: var(--space-lg) 0;
+  padding-left: 2rem;
+}
+
+.orderedList li {
+  color: var(--color-text-light);
+}
+
+.orderedList strong {
+  font-weight: bold;
+  color: var(--color-text-mid);
+}

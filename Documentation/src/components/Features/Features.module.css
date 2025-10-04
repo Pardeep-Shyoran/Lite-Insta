@@ -1,0 +1,17 @@
+.paragraph {
+  margin: var(--space-lg) 0;
+  color: var(--color-text-mid);
+}
+
+.list {
+  margin: var(--space-lg) 0;
+}
+
+.list li {
+  color: var(--color-text-light);
+  margin: 0 2rem;
+}
+
+.list li strong{
+  color: var(--color-text-mid);
+}

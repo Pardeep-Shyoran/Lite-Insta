@@ -1,0 +1,13 @@
+.paragraph {
+  margin: var(--space-lg) 0;
+  color: var(--color-text-light);
+}
+
+.paragraph a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.paragraph a:hover {
+  text-decoration: underline;
+}

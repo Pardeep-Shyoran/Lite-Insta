@@ -1,0 +1,30 @@
+.paragraph {
+  margin: var(--space-lg) 0;
+  color: var(--color-text-mid);
+}
+
+.list {
+  margin: var(--space-lg) 0;
+}
+
+.list li {
+  color: var(--color-text-light);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0;
+}
+
+.table th, .table td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--color-surface-alt);
+  font-weight: 700;
+  color: var(--color-text-mid);
+}

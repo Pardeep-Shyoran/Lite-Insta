@@ -1,0 +1,19 @@
+.paragraph {
+  margin: var(--space-lg) 0;
+  color: var(--color-text-light);
+}
+
+.subheading {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin: 1rem 0 0.5rem 0;
+}
+
+.list {
+  margin: var(--space-lg) 0;
+}
+
+.list li {
+  color: var(--color-text-light);
+  margin: 0 0 0 2rem;
+}
